@@ -1,6 +1,6 @@
 # TaxoEnrich
 
-The source code used for TaxoEnrich: Self-Supervised Taxonomy Completion via Structure-Semantic Representations, published in WWW 2022.
+The source code used for TaxoEnrich: Self-Supervised Taxonomy Completion via Structure-Semantic Representations [[paper]](https://arxiv.org/abs/2202.04887), published in WWW 2022.
 
 Contact: Minhao Jiang (minhaoj2@illinois.edu)
 
