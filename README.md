@@ -37,9 +37,12 @@ For dataset used in our paper, you can directly download all input files below a
 
 For expanding new input taxonomies, you need to read this section and format your datasets accordingly.
 
-[MAG_CS](https://drive.google.com/file/d/1SkH74aTW6lfmuZll06wBFwv_R1Pt6kLC/view?usp=sharing) \
-[MAG_PSY](https://drive.google.com/file/d/1cTr4n65ymLneUP_9wUitNgZ1Nbl9jXZ0/view?usp=sharing) \
-[SemEval_Noun](https://drive.google.com/file/d/1YdHTQp5YxLFHroF9_qvK9dGZWh8Ivi7H/view?usp=sharing) \
+[MAG_CS](https://drive.google.com/file/d/1SkH74aTW6lfmuZll06wBFwv_R1Pt6kLC/view?usp=sharing) 
+
+[MAG_PSY](https://drive.google.com/file/d/1cTr4n65ymLneUP_9wUitNgZ1Nbl9jXZ0/view?usp=sharing) 
+
+[SemEval_Noun](https://drive.google.com/file/d/1YdHTQp5YxLFHroF9_qvK9dGZWh8Ivi7H/view?usp=sharing) 
+
 [SemEval_Verb](https://drive.google.com/file/d/1mdOYKHMSVT6lvYBRWROC1SJSpMxA-hK3/view?usp=sharing) 
 
 ### Step 0.a (Required): Organize your input taxonomy along with node features into the following 3 files
