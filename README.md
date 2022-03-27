@@ -117,12 +117,13 @@ Write all the parameters in an config file, let's say **./config_files/config.un
 
 Please check **./config_files/config.explain.json** for explanation of all parameters in config file
 
-There are four config files under each sub dirs of **./config_files**:
+There are five config files under each sub dirs of **./config_files**:
 
-1. **baselineex**: baselines for taxonomy expansion;
+1. **baselineex**: baselines for taxonomy expansion (bilinear model);
 2. **tmnex**: TMN for taxonomy expansion;
 3. **baseline**: baselines for taxonomy completion;
 4. **tmn**: TMN for taxonomy completion;
+5. **enrich**: TaxoEnrich for taxonomy completion;
 
 ```
 python train.py --config config_files/config.universal.json
