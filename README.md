@@ -2,6 +2,17 @@
 
 The source code used for TaxoEnrich: Self-Supervised Taxonomy Completion via Structure-Semantic Representations [[paper]](https://arxiv.org/abs/2202.04887), published in WWW 2022.
 
+Please cite the following work if you find the paper useful.
+
+```
+@inproceedings{jiang2022taxoenrich,
+	Author = {Minhao Jiang, Xiangchen Song, Jieyu Zhang, Jiawei Han}, 
+	Booktitle = {WWW},
+	Title = {TaxoEnrich: Self-Supervised Taxonomy Completion via Structure-Semantic},
+	Year = {2022}
+}	
+```
+
 Contact: Minhao Jiang (minhaoj2@illinois.edu)
 
 ## Install Guide
@@ -26,6 +37,10 @@ For dataset used in our paper, you can directly download all input files below a
 
 For expanding new input taxonomies, you need to read this section and format your datasets accordingly.
 
+[MAG_CS](https://drive.google.com/file/d/1SkH74aTW6lfmuZll06wBFwv_R1Pt6kLC/view?usp=sharing) \
+[MAG_PSY](https://drive.google.com/file/d/1cTr4n65ymLneUP_9wUitNgZ1Nbl9jXZ0/view?usp=sharing) \
+[SemEval_Noun](https://drive.google.com/file/d/1YdHTQp5YxLFHroF9_qvK9dGZWh8Ivi7H/view?usp=sharing) \
+[SemEval_Verb](https://drive.google.com/file/d/1mdOYKHMSVT6lvYBRWROC1SJSpMxA-hK3/view?usp=sharing) 
 
 ### Step 0.a (Required): Organize your input taxonomy along with node features into the following 3 files
 
@@ -65,9 +80,15 @@ Notes:
 
 1. Make sure the <TAXONOMY_NAME> is the same across all the 3 files.
 2. The <EMBED_SUFFIX> is used to chooose what initial embedding you will use. You can leave it empty to load the file "<TAXONOMY_NAME>.terms.embed". **Make sure you can generate the embedding for a new given term.**
+### Step 1: Generate the embeddings for the existing taxonomy
 
+1. After formatting the data file as above, run
 
-### Step 1: Generate the binary dataset file
+```python embedding_generation.py```
+
+2. In the complete data, you will get 7 files representing the whole taxonomic structure and concept names as described above. And now you can generate the binary dataset file with the following step.
+
+### Step 2: Generate the binary dataset file
 
 1. create a folder "./data/{DATASET_NAME}"
 2. put the above three required files (as well as three optional partition files) in "./data/{DATASET_NAME}"
@@ -86,6 +107,7 @@ This script will first load the existing taxonomy (along with initial node featu
 Then, if `existing_partition` is 0, it will generate a random train/validation/test partitions, otherwise, it will load the existing train/validation/test partition files.
 Notice that if `partition_pattern` is `internal`, it will randomly sample both internal and leaf nodes for validation/test, which makes it a taxonomy completion task; if it is set `leaf`, it will become a taxonomy expansion task.
 Finally, it saves the generated dataset (along with all initial node features) in one pickle file for fast loading next time.
+
 
 ## Model Training
 
@@ -137,15 +159,17 @@ python train.py --config config_files/MAG-PSY/config.test.tmn.json --mm TMN
 
 Although we only use initial embedding as input in our paper, our code supports combinations of complicated encoders such as both GNN and LSTM.
 
-Check out the `mode` parameter, there are three symbols for `mode`: `r`, `p` and `g`, representing initial embedding, LSTM and GNN respectively. 
+Check out the `mode` parameter, there are three symbols for `mode`: `r`, `p`, `g` and `s`, representing initial embedding, LSTM, GNN, and sibling encoder respectively. 
 
 If you want to replace initial embedding with a GNN encoder, plz set `mode` to `g`; 
 
-If you want to use a combination of initial embedding and GNN encoder, plz set `mode` to `rg`, and then the initial embedding and embedding output by GNN encoder will be concatenated for calculating matching score; 
+If you want to use a combination of initial embedding, LSTM sequential encoder and the sibling encoder, plz set `mode` to `rgs`, and then the initial embedding and embedding output by GNN and sibling encoder will be concatenated for calculating matching score; 
 
 For GNN encoder, we defer user to Jiaming's WWW'20 paper [TaxoExpan](https://arxiv.org/abs/2001.09522);
 
 For LSTM encoder, we collect a path from root to the anchor node, and them use LSTM to encoder it to generate representation of anchor node;
+
+For sibling encoder, we introduce the details in the Section 3.3 in our paper.
 
 
 ## Model Inference
