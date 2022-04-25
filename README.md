@@ -6,10 +6,18 @@ Please cite the following work if you find the paper useful.
 
 ```
 @inproceedings{jiang2022taxoenrich,
-	Author = {Minhao Jiang, Xiangchen Song, Jieyu Zhang, Jiawei Han}, 
-	Booktitle = {WWW},
-	Title = {TaxoEnrich: Self-Supervised Taxonomy Completion via Structure-Semantic},
-	Year = {2022}
+author = {Jiang, Minhao and Song, Xiangchen and Zhang, Jieyu and Han, Jiawei},
+title = {TaxoEnrich: Self-Supervised Taxonomy Completion via Structure-Semantic Representations},
+year = {2022},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3485447.3511935},
+doi = {10.1145/3485447.3511935},
+booktitle = {Proceedings of the ACM Web Conference 2022},
+pages = {925–934},
+numpages = {10},
+location = {Virtual Event, Lyon, France},
+series = {WWW '22}
 }	
 ```
 
